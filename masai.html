@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+  <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+        background-color: azure;
+    }
+    .container{
+        width: 450px;
+        height: 450px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        row-gap: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 0.5rem;
+        padding: 2rem 2.5rem;
+    }
+    .container h1{
+        font-size: 2rem;
+        color: aquamarine;
+        font-weight: 800;
+    }
+    .container p{
+        font-size: 1.9rem;
+        color: gray;
+    }
+    .container #name, #gender{
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 0.8rem;
+        font-size: 1rem;
+    }
+    .container #btn{
+        width: 50%;
+        padding: 0.5rem 1rem;
+        color: #fff;
+        background-color: gray;
+        border-radius: 0.8rem;
+        font-size: 1.1rem;
+       cursor: pointer;  
+       outline: none;  
+       border: none;
+       transition: all 0.5s ease-in-out;
+       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .container #btn:hover{
+        background-color: #fff;
+        color: #000;
+    }
+    
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Masai School Application</h1>
+  <p>Enter Your name and gender to apply for masai school</p>
+  <h2 id="display">Display entered name and gender here</h2>
+  <hr>
+  <input type="text" id ="name" placeholder="Enter your name">
+  <select id="gender">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+  <button id="btn">Apply</button>
+  </div>
+</body>
+</html>
+<script>
+    
+    let display = document.getElementById("display");
+    let btn = document.getElementById("btn");
+    let name = document.getElementById("name");
+    let gender = document.getElementById("gender");
+
+    btn.addEventListener("click", () =>{
+       display.innerText = `Name = ${name.value} || Gender = ${gender.value}`;
+    })
+
+</script>
