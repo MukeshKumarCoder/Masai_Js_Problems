@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revision Assignment</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+        }
+        #myInput{
+            display: inline-block;
+            padding: 1rem;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+        }
+        #myButton{
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        .display, #displayText{
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        #displayText{
+            font-size: 1.5rem;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="myInput" placeholder="Enter Your Text Here" />
+      <button onclick="Show()" id="myButton">Submit</button>
+      <div class="display">Entered Value :<span id="displayText"></span></div>
+    </div>
+
+    <script>
+      let input = document.getElementById("myInput");
+      let btn = document.getElementById("myButton");
+      let displayText = document.getElementById("displayText");
+
+      function Show(){
+        displayText.innerText = input.value;
+      }
+    </script>
+  </body>
+</html>
