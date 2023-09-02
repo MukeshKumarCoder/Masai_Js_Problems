@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container{
+            width: 400px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+      input {
+        margin: 1rem 0;
+        width: 100%;
+        border-radius: 10px;
+        font-size: 1rem;
+        outline: none;
+        padding: 1rem;
+      }
+      button {
+        width: 40%;
+        margin: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        /* margin: 1rem; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <input type="number" id="input1" placeholder="Enter 1st number" />
+    <input type="number" id="input2" placeholder="Enter 2nd number" />
+    <div>
+      <button onclick="add()">Addition</button>
+      <button onclick="sub()">Subtract</button>
+      <button onclick="multi()">Multipliation</button>
+      <button onclick="divide()">Divide</button>
+    </div>
+    </div>
+    <script>
+      let input1 = document.getElementById("input1");
+      let input2 = document.getElementById("input2");
+
+      function add() {
+        let num1 = +input1.value + +input2.value;
+        alert(num1);
+      }
+
+      function sub() {
+        let num2 = +input1.value - +input2.value;
+        alert(num2);
+      }
+
+      function multi() {
+        let num3 = +input1.value * +input2.value;
+        alert(num3);
+      }
+
+      function divide() {
+        let num1 = +input1.value / +input2.value;
+        alert(num1);
+      }
+    </script>
+  </body>
+</html>
