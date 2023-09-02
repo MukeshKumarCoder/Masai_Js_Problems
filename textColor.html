@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+            background-color: azure;
+        }
+        h1{
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        button{
+            padding: 0.5rem 1rem;
+            font-weight: 800;
+            font-style: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1>Masai School</h1>
+    <button onClick="changeRed()">Change Text color to red</button>
+    <button onClick="changeYellow()">Change Text color to yellow</button>
+    </div>
+  </body>
+</html>
+
+<script>
+
+  function changeRed(){
+    // change text color of h1 to red
+    document.querySelector("h1").style.color = "red";
+  }
+
+  function changeYellow(){
+    // change text color of h1 to yellow
+    document.querySelector("h1").style.color = "yellow";
+  }
+</script>
