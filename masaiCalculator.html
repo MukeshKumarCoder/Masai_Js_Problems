@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masai Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      body {
+        background-color: gray;
+      }
+      h1 {
+        text-align: center;
+        margin: 2rem;
+        font-style: 3rem;
+        color: #fff;
+      }
+      .calculator {
+        width: 100%;
+        min-height: 80vh;
+        background: #fff;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 400px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        gap: 10px;
+        border-radius: 12px;
+        box-shadow: 0px 4px 8px 0px #32323233, inset 0px 4px 8px 0px #32323233;
+      }
+      .calculator .output {
+        background-color: #fff;
+        box-shadow: 0px 4px 8px 0px #32323233;
+        grid-column: 1/5;
+        color: #000;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 2.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+      .calculator button {
+        font-size: 1rem;
+        font-weight: 700;
+        border: none;
+        box-shadow: 0px 4px 8px 0px #32323233;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .black {
+        background-color: #000;
+        color: #fff;
+      }
+      .red {
+        background-color: #ff2121;
+        color: #fff;
+      }
+      .number,
+      #decimanbtn {
+        background-color: #f7f3f8;
+      }
+      .span-two {
+        grid-column: span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Masai Calculator</h1>
+    <div class="calculator">
+      <div class="output">
+        <div id="result"></div>
+      </div>
+      <button id="clearbtn" class="span-two red">C</button>
+      <button class="number" id="deletbtn">&larr;</button>
+      <button class="black" id="dividebtn">/</button>
+      <button class="number">7</button>
+      <button class="number">8</button>
+      <button class="number">9</button>
+      <button class="black" id="multiplybtn">*</button>
+      <button class="number">4</button>
+      <button class="number">5</button>
+      <button class="number">6</button>
+      <button class="black" id="subtractbtn">-</button>
+      <button class="number">1</button>
+      <button class="number">2</button>
+      <button class="number">3</button>
+      <button class="black" id="addbtn">+</button>
+      <button class="number">0</button>
+      <button id="decimanbtn">.</button>
+      <button id="equalbtn" class="span-two black">=</button>
+    </div>
+
+    <script>
+      const clearbtn = document.getElementById("clearbtn");
+      const deletbtn = document.getElementById("deletbtn");
+      const dividebtn = document.getElementById("dividebtn");
+      const multiplybtn = document.getElementById("multiplybtn");
+      const subtractbtn = document.getElementById("subtractbtn");
+      const addbtn = document.getElementById("addbtn");
+      const decimanbtn = document.getElementById("decimanbtn");
+      const equalbtn = document.getElementById("equalbtn");
+      const numbersBtn = document.querySelectorAll(".number");
+      const resultElement = document.getElementById("result");
+
+      let result = "";
+      let operation = "";
+      let previousOperant = 0;
+
+      const appendNumber = (number) => {
+        if (number === "." && result.includes(".")) return;
+
+        result += number;
+        updateDisplay();
+      };
+
+      // function to update display
+      const updateDisplay = () => {
+        if (operation) {
+          resultElement.innerText = `${previousOperant} ${operation} ${result}`;
+        } else {
+          resultElement.innerText = result;
+        }
+      };
+
+      // function to select operator
+      const selectOperator = (operatorValue) => {
+        if (result === "") return;
+
+        if (operation !== "" && previousOperant !== "") {
+          calculateResult();
+        }
+
+        operation = operatorValue;
+        previousOperant = result;
+        result = "";
+        updateDisplay();
+      };
+
+      // function to calculate result
+
+      const calculateResult = () => {
+        let evaluteResult;
+        let prev = parseFloat(previousOperant);
+        let current = parseFloat(result);
+
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operation) {
+          case "+":
+            evaluteResult = prev + current;
+            break;
+          case "-":
+            evaluteResult = prev - current;
+            break;
+          case "*":
+            evaluteResult = prev * current;
+            break;
+          case "/":
+            evaluteResult = prev / current;
+            break;
+
+          default:
+            return;
+        }
+
+        result = evaluteResult.toString();
+        operation = "";
+        previousOperant = "";
+      };
+
+      // Add Event Listner to number
+      numbersBtn.forEach((button) => {
+        button.addEventListener("click", () => {
+          appendNumber(button.innerText);
+        });
+      });
+
+      // function to clear Display
+
+      const clearDisplay = () => {
+        result = "";
+        previousOperant = "";
+        operation = "";
+        updateDisplay();
+      };
+
+      // function to deleteLastDigit
+
+      const deleteLastDigit = () => {
+        if (result === "") return;
+
+        result = result.slice(0, -2);
+        updateDisplay();
+      };
+
+      decimanbtn.addEventListener("click", () => appendNumber("."));
+      addbtn.addEventListener("click", () => selectOperator("+"));
+      subtractbtn.addEventListener("click", () => selectOperator("-"));
+      multiplybtn.addEventListener("click", () => selectOperator("*"));
+      dividebtn.addEventListener("click", () => selectOperator("/"));
+      equalbtn.addEventListener("click", () => {
+        if (result === "") return;
+        calculateResult();
+        updateDisplay();
+      });
+
+      clearbtn.addEventListener("click", clearDisplay);
+      deletbtn.addEventListener("click", deleteLastDigit);
+    </script>
+  </body>
+</html>
