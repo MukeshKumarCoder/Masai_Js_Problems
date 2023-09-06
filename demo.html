@@ -3,55 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bmi Calculator</title>
+    <title>Leaderboard</title>
     <style>
-      .main {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        width: 30%;
-        height: auto;
-        margin: auto;
+      body {
+        font-family: Arial, sans-serif;
       }
-      button {
-        margin: 1rem 0;
+      .container {
+        text-align: center;
+        margin-top: 50px;
+      }
+      #score-box {
+        font-size: 24px;
+        padding: 10px;
+        border: 1px solid #000;
+        width: 200px;
+        margin: 2rem 42%;
+      }
+      .number-button {
+        font-size: 18px;
+        margin: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+      }
+      .color {
+        background-color: rgb(3, 65, 3);
+      }
+      .indigo {
+        background-color: purple;
+      }
+      .color2 {
+        background-color: rgb(116, 68, 6);
+      }
+      .enter {
+        background-color: #000;
+        color: white;
       }
     </style>
   </head>
   <body>
-    <div class="main">
-      <h1>Check your BMI</h1>
-      <p>Enter your weigth and height below to check your BMI results</p>
-      <label for="inp1">Put your weigth in (KG)</label>
-      <input type="number" id="inp1" />
-      <label for="inp2">And your height in here (CM)</label>
-      <input type="number" id="inp2" />
-      <button id="btn">Calculate BMI</button>
-      <p id="value">Total</p>
+    <div class="container">
+      <div id="score-box"></div>
+      <div>
+        <button class="number-button color" onclick="addToScore(1)">1</button>
+        <button class="number-button color2" onclick="addToScore(2)">2</button>
+        <button class="number-button color" onclick="addToScore(3)">3</button>
+      </div>
+      <div>
+        <button class="number-button color2" onclick="addToScore(4)">4</button>
+        <button class="number-button color2" onclick="addToScore(5)">5</button>
+        <button class="number-button color2" onclick="addToScore(6)">6</button>
+      </div>
+      <div>
+        <button class="number-button color" onclick="addToScore(7)">7</button>
+        <button class="number-button color2" onclick="addToScore(8)">8</button>
+        <button class="number-button color" onclick="addToScore(9)">9</button>
+      </div>
+      <div>
+        <button class="number-button indigo" onclick="addToScore(0)">0</button>
+      </div>
+      <div>
+        <button class="number-button enter" onclick="enterScore()">
+          ENTER
+        </button>
+      </div>
+      <div>
+        <label>MIN: <span id="min-score">-</span></label>
+        <label>MAX: <span id="max-score">-</span></label>
+      </div>
     </div>
     <script>
-      let input1 = document.getElementById("inp1");
-      let input2 = document.getElementById("inp2");
-      let button = document.getElementById("btn");
-      let val = document.getElementById("value");
-      button.addEventListener("click", function () {
-        let calculateBmi =
-          (+input1.value / (+input2.value * +input2.value)) * 10000;
-        val.innerText = calculateBmi;
-        if (calculateBmi <= 18.4) {
-          val.innerText =
-            "Your BMI " + calculateBmi + " Which means you are Underweight";
-        } else if (calculateBmi >= 18.5 && calculateBmi <= 24.9) {
-          val.innerText =
-            "Your BMI " + calculateBmi + " Which means you are Normalweight";
-        } else if (calculateBmi >= 25 && calculateBmi <= 29.9) {
-          val.innerText =
-            "Your BMI " + calculateBmi + " Which means you are Overweight";
-        } else if (calculateBmi > 30) {
-          val.innerText =
-            "Your BMI " + calculateBmi + " Which means you are Obese";
+      let currentScore = "";
+      let minScore = Infinity;
+      let maxScore = -Infinity;
+
+      function updateScoreBox() {
+        const scoreBox = document.getElementById("score-box");
+        scoreBox.textContent = currentScore;
+      }
+
+      function addToScore(number) {
+        currentScore += number;
+        updateScoreBox();
+      }
+
+      function enterScore() {
+        if (currentScore === "") return;
+
+        const score = parseInt(currentScore);
+
+        if (score < minScore) {
+          minScore = score;
+          document.getElementById("min-score").textContent = minScore;
         }
-      });
+
+        if (score > maxScore) {
+          maxScore = score;
+          document.getElementById("max-score").textContent = maxScore;
+        }
+
+        currentScore = "";
+        updateScoreBox();
+      }
     </script>
   </body>
 </html>
