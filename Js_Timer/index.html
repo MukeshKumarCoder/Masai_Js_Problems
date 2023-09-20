@@ -49,7 +49,7 @@
   </head>
   <body>
     <div class="stopwatch">
-      <div id="display">00 : 00 : 00</div>
+      <div id="display">00 : 00</div>
       <div class="btn">
         <button style="background-color: green" id="startBtn">Start</button>
         <button style="background-color: yellow; color: black" id="pauseBtn">
@@ -58,5 +58,44 @@
         <button style="background-color: red" id="resetBtn">Reset</button>
       </div>
     </div>
+
+    <script>
+      let display = document.getElementById("display");
+      let startBtn = document.getElementById("startBtn");
+      let pauseBtn = document.getElementById("pauseBtn");
+      let resetBtn = document.getElementById("resetBtn");
+
+      let timeCount = 10;
+      let timer = timeCount * 60;
+      let newTimer = null;
+
+      let updateCount = () => {
+        let minut = Math.floor(timer / 60);
+        let second = timer % 60;
+         minut = minut < 10 ? "0" + minut : minut;
+         second = second < 10 ? "0" + second : second;
+        display.innerHTML = `${minut} : ${second}`;
+        timer--;
+      };
+
+      startBtn.addEventListener("click", () => {
+        if (newTimer !== null) {
+          clearInterval(newTimer);
+        } else {
+          newTimer = setInterval(updateCount, 1000);
+        }
+      });
+
+      pauseBtn.addEventListener("click", () => {
+        clearInterval(newTimer);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        clearInterval(newTimer);
+        timer = timeCount * 60;
+        updateCount();
+        newTimer = null;
+      });
+    </script>
   </body>
 </html>
