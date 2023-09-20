@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+      .stopwatch{
+        width: 20%;
+        height: 200px;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
+        margin: 5rem auto;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+      #display{
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      .btn{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .btn button{
+        padding: 0.5rem 1rem;
+        font-weight: 800;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="stopwatch">
+      <div id="display">00 : 00 : 00</div>
+      <div class="btn">
+        <button style="background-color: green" id="startBtn">Start</button>
+        <button style="background-color: yellow; color: black;" id="pauseBtn">Pause</button>
+        <button style="background-color: red;" id="resetBtn">Reset</button>
+      </div>
+    </div>
+
+    <script>
+      let display = document.getElementById("display");
+      let startBtn = document.getElementById("startBtn");
+      let pauseBtn = document.getElementById("pauseBtn");
+      let resetBtn = document.getElementById("resetBtn");
+
+      let milisecond = 00;
+      let seconds = 00;
+      let minuts = 00;
+
+      let timerId = null;
+
+      startBtn.addEventListener("click", () =>{
+        if(timerId !== null){
+            clearInterval(timerId);
+        }
+        timerId = setInterval(startTimer, 10);
+      });
+
+      pauseBtn.addEventListener("click", () =>{
+        clearInterval(timerId);
+      });
+
+      resetBtn.addEventListener("click", () =>{
+        clearInterval(timerId);
+        display.innerHTML = `00 : 00 : 00`;
+        milisecond = seconds = minuts = 00;
+      });
+
+      function startTimer() {
+        milisecond++;
+        if(milisecond === 100){
+            milisecond = 0;
+            seconds++;
+            if(seconds === 60){
+                seconds = 0;
+                minuts++;
+            }
+        }
+        let mlsecString = milisecond < 10 ? `0${milisecond}` : milisecond;
+        let secString = seconds < 10 ? `0${seconds}` : seconds;
+        let minString = minuts < 10 ? `0${minuts}` : minuts;
+
+        display.innerText = `${minString} : ${secString} : ${mlsecString}`;
+      }
+
+      
+    </script>
+  </body>
+</html>

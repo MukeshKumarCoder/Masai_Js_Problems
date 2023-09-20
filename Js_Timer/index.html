@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Timer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+      .stopwatch {
+        width: 20%;
+        height: 200px;
+        padding: 2rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1.5rem;
+        margin: 5rem auto;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+      #display {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+      .btn {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .btn button {
+        padding: 0.5rem 1rem;
+        font-weight: 800;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stopwatch">
+      <div id="display">00 : 00 : 00</div>
+      <div class="btn">
+        <button style="background-color: green" id="startBtn">Start</button>
+        <button style="background-color: yellow; color: black" id="pauseBtn">
+          Pause
+        </button>
+        <button style="background-color: red" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </body>
+</html>
