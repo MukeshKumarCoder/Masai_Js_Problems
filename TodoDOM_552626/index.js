@@ -15,6 +15,8 @@ form.addEventListener("submit", (e) => {
 
   data.push(todoData);
 
+  console.log(todoData)
+
   tbody.innerHTML = "";
 
 
