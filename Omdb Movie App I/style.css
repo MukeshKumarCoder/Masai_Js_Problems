@@ -9,7 +9,7 @@ body{
     height: 100%;
 }
 .container{
-    width: 30%;
+    /* width: 40%; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +22,7 @@ body{
     border-bottom: 4px solid black;
 }
 .container input{
-    width: 70%;
+    width: 15%;
     padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     outline: none;
@@ -30,7 +30,7 @@ body{
     border: 3px solid black;
 }
 .container button{
-    width: 40%;
+    width: 12%;
     padding: 0.7rem 1rem;
     font-size: 1.5rem;
     font-weight: 800;
