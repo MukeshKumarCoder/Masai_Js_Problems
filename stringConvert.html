@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Convertor</title>
+  </head>
+  <body>
+    <script>
+      // Write a function to convert a character to lower case
+      // Use this function to convert a given word to lower case
+      // Use that function to convert an array of strings to array of lower case strings
+      // Sample Input ["MA", "SA", "I", "SCH", "OOL"]
+      // Sample Output ["ma", "sa", "i", "sch", "ool"]
+
+      let convertChar = (char) => {
+        let lower = "abcdefghijklmnopqrstuvwxyz";
+        let upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for (let i = 0; i < upper.length; i++) {
+          if (char == upper[i]) {
+            return lower[i];
+          }
+        }
+        return char;
+      };
+
+      let convertWord = (word) => {
+        let bag = "";
+
+        for (let i = 0; i < word.length; i++) {
+          let lowerWord = convertChar(word[i]);
+          bag += lowerWord;
+        }
+        return bag;
+      };
+
+      let convertArray = (arr) => {
+        let newArray = [];
+
+        for (let i = 0; i < arr.length; i++) {
+          newArray.push(convertWord(arr[i]));
+        }
+        return newArray;
+      };
+
+      let arr = ["MA", "SA", "I", "SCH", "OOL"];
+
+      console.log(convertArray(arr));
+    </script>
+  </body>
+</html>
