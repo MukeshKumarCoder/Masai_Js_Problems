@@ -1,36 +1,3 @@
-// class Counter {
-//   constructor(){
-//     this.displayCounter = document.querySelector(".Counter");
-//     this.count = 0;
-//     this. timer = null;
-//   }
-
-//   strarCount(){
-//     this.displayCounter.innerText = this.count++;
-
-//   }
-//   autoStart(){
-//     this.timer = setInterval(this.strarCount.call(this), 1000)
-//   }
-//   stopCount(){
-//     clearInterval(this.timer);
-//   }
-//   increment(){
-//     this.stopCount();
-//     this.displayCounter.innerText = this.count++;
-//   }
-//   decrement(){
-//     this.stopCount();
-//     this.displayCounter.innerText = this.count--;
-//   }
-// }
-
-// let myCounter = new Counter();
-
-// <h1>Automatic Counter</h1>
-// <p id="countDisplay">Count: 0</p>
-// <button id="startButton">Start</button>
-// <button id="stopButton">Stop</button>
 
 class Counter {
   constructor() {
@@ -80,14 +47,17 @@ document.getElementById("stopBtn").addEventListener("click", () => {
 
 document.getElementById("increment").addEventListener("click", () => {
   counter.increment();
+  counter.stop();
   counter.displayCount();
 });
 
 document.getElementById("decrement").addEventListener("click", () => {
   counter.decrement();
+  counter.stop();
   counter.displayCount();
 });
 
 
 
 counter.displayCount();
+

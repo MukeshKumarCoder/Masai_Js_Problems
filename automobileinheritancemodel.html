@@ -7,6 +7,22 @@
   </head>
   <body>
     <script>
+      // Using Object.Create
+
+      let tataCar = {
+        brandName: "TATA",
+        wheels: "four",
+        horn: function () {
+          console.log("The horn is blowing");
+        },
+      };
+
+      let tataNewCar = Object.create(tataCar);
+
+      console.log(tataNewCar);
+
+      // Using Constructor Function
+
       function Car(brand, model, speed, fuelType, numberOfWheels) {
         this.brand = brand;
         this.model = model;
@@ -17,16 +33,13 @@
 
       let car1 = new Car("TATA", 2020, "220km/h", "Petrol", "four");
 
-      console.log(car1);
-
-      let car2021 = Object.create(Car);
+      // console.log(car1);
 
       car2021 = new Car("TATA", 2021, "250km/h", "Petrol", "four");
 
-      car2021.sunRoof = () =>{
+      car2021.sunRoof = () => {
         console.log("SunRoof Is New Feature");
-      }
-
+      };
 
       console.log(car2021);
       car2021.sunRoof();
