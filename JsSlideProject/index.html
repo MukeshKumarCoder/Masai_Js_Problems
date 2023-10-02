@@ -57,7 +57,7 @@
       .btn button:hover {
         background-color: #86f884c6;
       }
-      .btn button:active{
+      .btn button:active {
         background-color: red;
       }
     </style>
@@ -113,7 +113,7 @@
       };
 
       let statrSlide = () => {
-       timer = slideInterval = setInterval(() => {
+        timer = slideInterval = setInterval(() => {
           imgSlide = (imgSlide + 1) % image.length;
           slide(imgSlide);
         }, 1000);
@@ -124,19 +124,18 @@
           flag = true;
           statrSlide();
           startbtn.innerText = "Stop";
-        }
-        else{
-            flag = false;
-            clearInterval(timer);
-            startbtn.innerText = "Start";
+        } else {
+          flag = false;
+          clearInterval(timer);
+          startbtn.innerText = "Start";
         }
       });
 
       const next = () => {
-          clearInterval(timer);
-          imgSlide = (imgSlide + 1) % image.length;
-          slide(imgSlide);
-          startbtn.innerText = "Start";
+        clearInterval(timer);
+        imgSlide = (imgSlide + 1) % image.length;
+        slide(imgSlide);
+        startbtn.innerText = "Start";
       };
       const prev = () => {
         clearInterval(timer);
