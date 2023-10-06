@@ -8,20 +8,15 @@
   </head>
   <body>
     <h1>Virtual McDonald's</h1>
-    <input type="radio" id="burgur" name="food" />
+    <input type="checkbox" id="burgur" name="food" />
     <label for="burgur">Burgur</label>
-    <input type="radio" id="pizza" name="food" />
+    <input type="checkbox" id="pizza" name="food" />
     <label for="pizza">Pizza</label>
-    <input type="radio" id="sandwich" name="food" />
+    <input type="checkbox" id="sandwich" name="food" />
     <label for="sandwich">Sandwich</label>
 
     <button id="btn">Order Food</button>
 
-    <!-- <div class="image">
-      <img src="burgur.jpeg" id="burgurimg" alt="burgur" />
-      <img src="pizza.jpeg" id="pizzaimg" alt="pizza" />
-      <img src="sandwich.jpeg" id="sandwichimg" alt="sandwich" />
-    </div> -->
     <div class="randomId">
         <img src="" alt="" id="image">
         <h1 id="h1"></h1>
@@ -29,4 +24,42 @@
 
     <script src="index.js"></script>
   </body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox Example</title>
+</head>
+<body>
+  <h1>Select Items:</h1>
+  <!-- <label><input id ="abc" type="checkbox" value="Item 1"> Item 1</label><br>
+  <label><input type="checkbox" value="Item 2"> Item 2</label><br>
+  <label><input type="checkbox" value="Item 3"> Item 3</label><br>
+  <label><input type="checkbox" value="Item 4"> Item 4</label><br>
+  <button onclick="showCheckedItems()">Show Checked Items</button> -->
+
+  <script>
+    function showCheckedItems() {
+        // let abc = document.getElementById("abc");
+        // console.log(abc.checked);
+
+      const checkboxes = document.querySelectorAll('input');
+    //   console.log(checkboxes[0].value);
+    // console.log(checkboxes);
+    // console.log(Array.from(checkboxes));
+    // console.log(checkboxes[0].checked)
+      const checkedItems = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+        console.log(checkedItems)
+      
+    //   console.log('Checked Items:', checkedItems);
+    }
+  </script>
+</body>
 </html>

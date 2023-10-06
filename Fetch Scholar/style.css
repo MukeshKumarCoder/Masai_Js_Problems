@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px;
+    padding: 0.6rem 5rem;
+    background: transparent;
+    position: fixed;
+    top: 0;
+}
+.header .logo img{
+    width: 30%;
+}
+.header .item-Filter{
+    display: flex;
+    align-items: center;
+    column-gap: 3rem;
+}
+.header .item-Filter input{
+    width: 13vw;
+    outline: none;
+    padding: 0.1rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+.header .item-Filter #btn{
+  padding: 0.1rem 0.9rem;
+  background-color: #26242495;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.header .filter> label{
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+.header .filter> select{
+    background-color: #fff;
+    color: black;
+    outline: none;
+    padding: 0.1rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+#root{
+    width: 80%;
+    margin: 8rem auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+.productCard{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1rem;
+    transition: all 0.3s ease-in;
+}
+.productCard:hover{
+    transform: scale(1.05);
+}
+.productCard img{
+    width: 80px;
+}
+.productCard h2{
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+.productCard .priceDetail{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.productCard .priceDetail > p{
+    color: #5050ea9a;
+    font-weight: 700;
+}
+.productCard p{
+    font-size: 0.9rem;
+    color: gray;
+}

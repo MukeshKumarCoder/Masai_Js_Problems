@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Array</title>
+  </head>
+  <body>
+    <script>
+      class CustomArray {
+        constructor(...arr) {
+          this.data = {};
+          this.size = arr.length;
+
+          for (let i = 0; i < arr.length; i++) {
+            this.data[i] = arr[i];
+          }
+        }
+
+        push(element) {
+          this.data[this.size++] = element;
+        }
+
+        pop() {
+          if (this.size === 0) {
+            return undefined;
+          }
+          const removedElement = this.data[--this.size];
+          delete this.data[this.size];
+          return removedElement;
+        }
+
+        top() {
+          if (this.size === 0) {
+            return undefined;
+          }
+          return this.data[this.size - 1];
+        }
+
+        print() {
+          const elements = [];
+          for (let i = 0; i < this.size; i++) {
+            elements.push(this.data[i]);
+          }
+          console.log(`[${elements.join(",")}]`);
+        }
+
+        printReverse() {
+          const elements = [];
+          for (let i = this.size - 1; i >= 0; i--) {
+            elements.push(this.data[i]);
+          }
+          console.log(`[${elements.join(",")}]`);
+        }
+
+        getSize() {
+          return this.size;
+        }
+      }
+
+      // Example usage:
+      const customArray = new CustomArray(1, 2, 3, 4);
+      customArray.push(5);
+      customArray.print(); // Output: [1,2,3,4,5]
+      customArray.pop();
+      customArray.print(); // Output: [1,2,3,4]
+      console.log(customArray.top());
+      customArray.printReverse(); // Output: [4,3,2,1]
+      console.log(customArray.getSize()); // Output: 4
+    </script>
+  </body>
+</html>
