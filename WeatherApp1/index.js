@@ -33,14 +33,13 @@ let fetchWeatherDetails = async () => {
     // console.log(data);
   } catch (error) {
     console.error("Data Not Found", error);
-    alert("please enter valid city name")
   }
 };
 
 fetchWeatherDetails();
 
 let showWeather = (data) => {
-    // cloud.textContent = data.weather[0].icon
+
    currentTemp.textContent = `${(data?.main?.temp - 273.15).toFixed()} °C`;
    City_name.textContent = data.name
    realfeel.textContent = `RealFeel ${(data.main.feels_like - 273.15).toFixed()} °C`;

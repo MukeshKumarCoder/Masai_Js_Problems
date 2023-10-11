@@ -1,39 +1,53 @@
-let burgur = document.getElementById("burgur");
-let pizza = document.getElementById("pizza");
-let sandwich = document.getElementById("sandwich");
-let orderBtn = document.getElementById("btn");
-// let burgurimg = document.getElementById("burgurimg");
-// let pizzaimg = document.getElementById("pizzaimg");
-// let sandwichimg = document.getElementById("sandwichimg");
-let image = document.getElementById("image");
-let randomId = document.getElementById("randomId");
-let h1 = document.getElementById("h1");
+  const orderButton = document.getElementById("orderButton");
+  const foodImage = document.getElementById("foodImage");
+  const orderId = document.getElementById("orderId");
+  const foodItems = document.querySelectorAll(".food-checkbox");
 
-orderBtn.addEventListener("click", () => {
-  if (item.length == 0) {
-    alert("please select Atleast one food");
-  }
-  else{
-    
-  }
-  const myPromise = new Promise((res) => {
-    setTimeout(() => {
-      res();
-    }, randomTime(5, 10) * 500);
-  }).then(() => {
-    
+  orderButton.addEventListener("click", function () {
+      // Disable the button and checkboxes during the order process
+      orderButton.disabled = true;
+      foodItems.forEach(item => item.disabled = true);
 
+      // Find the selected food item
+      const selectedFoodItem = [...foodItems].find(item => item.checked);
 
-    h1.innerText = `Order id : ${randomOrderId()}`
+      if (selectedFoodItem) {
+          // Simulate an order processing with a random delay
+          const delayInSeconds = Math.floor(Math.random() * 5) + 1;
+          const orderIdValue = Math.floor(Math.random() * 1000);
+
+          setTimeout(function () {
+              // Show the selected food item's image and order ID
+              foodImage.innerHTML = `<img src="${getImageURL(selectedFoodItem.value)}" alt="${selectedFoodItem.value}">`;
+              orderId.textContent = `Order ID: ${orderIdValue}`;
+
+              foodImage.style.display = "block";
+              orderId.style.display = "block";
+
+              // Enable the button and checkboxes again
+              orderButton.disabled = false;
+              foodItems.forEach(item => item.disabled = false);
+          }, delayInSeconds * 1000);
+      } else {
+          // If no food item is selected, show an alert
+          alert("Please select a food item before placing an order.");
+
+          // Enable the button and checkboxes again
+          orderButton.disabled = false;
+          foodItems.forEach(item => item.disabled = false);
+      }
   });
-});
 
-function randomTime(min, max){
-     return Math.floor(Math.random() * (max - min) + 1); 
-};
+  // Function to get the image URL based on the selected food item
+  function getImageURL(foodItem) {
+      // Replace this with actual image URLs for your food items
+      const imageUrls = {
+          Burger: "burger.jpeg",
+          Pizza: "pizza.jpeg",
+          sandwich: "sandwich.jpeg",
+        //   Sushi: "maigi.jpg",
+      };
 
-function randomOrderId(){
-    return Math.floor(Math.random() * 1000 + 1)
-};
-
+      return imageUrls[foodItem] || "placeholder_image.png";
+  }
 

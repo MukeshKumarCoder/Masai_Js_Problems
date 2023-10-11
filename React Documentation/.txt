@@ -1,0 +1,46 @@
+     
+     01 What is React?
+         React Is a JavaScript Libraty;
+
+     02  Who made React?
+        React was created by Jordan Walke, a software engineer at Facebook.
+
+     03 What is Babel?
+       Bable is a JavaScript Complier Witch Convert React Code In JSX.
+
+      04  How does Babel convert html code in React into valid code?
+       Babel converts HTML code into valid code by using the JSX code and converter.
+
+      05 What is ReactDOM used for? Write an example?
+       ReactDOM is used to render components and elements on the web. It is a part of the React library used to create user interfaces and dynamic web applications, as well as reusable and composable components that can be used in different applications.
+
+       import React from 'react';
+        import ReactDOM from "react-dom";
+
+      const reactDocumentation = () => {
+        return (
+          <div>
+            
+          </div>
+        )
+      }
+      
+      export default reactDocumentation
+
+        // Render the React component in the DOM
+        ReactDOM.render(<reactDocumentation />, document.getElementById("root"));
+
+      06 What are the packages that you need to import for react to work with?
+         React, ReactDOM, 
+
+      07 How do you add react to a web application?
+         You need to install Node.js for local development. Although you can try React online or with a simple HTML page, realistically most JavaScript tooling you’ll want to use for development requires Node.js. 
+         
+     08 What is React.createElement?
+        React. createElement Create and return a new React element of the given type. The type argument can be either a tag name string (such as 'div' or 'span' ), a React component type (a class or a function), or a React fragment type.
+
+      09 What are the three properties that createElement accept?
+         createElement take's  type, [props], [... children] 
+
+     10 What is the meaning of render and root?
+        React renders HTML to the web page by using a function called render(). The purpose of the function is to display the specified HTML code inside the specified HTML element. In the render() method, we can read props and state and return our JSX code to the root component of our app.

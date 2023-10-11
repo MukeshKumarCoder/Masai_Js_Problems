@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+.container{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5rem auto;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 1rem;
+    row-gap: 1rem;
+}
+.input{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.input label{
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.input #payment{
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    outline: none;
+}
+.container button{
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #ee4a4a;
+    color: #fff;
+    cursor: pointer;
+}
+.container button:hover{
+    background-color: red;
+}
+#para{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
